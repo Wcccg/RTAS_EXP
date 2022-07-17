@@ -1,0 +1,16 @@
+HP =  6
+-----------------
+task 1 :
+period =  3
+C =  2
+worksNum =  2
+-----------------
+task 2 :
+period =  2
+C =  1
+worksNum =  3
+-----------------
+task 3 :
+period =  2
+C =  1
+worksNum =  3
