@@ -95,7 +95,8 @@ def addCon3(m, P, B, HP):
         B_i_j = B[str(i)+'_'+str(j)]
         con += B_i_j
     B_s_c = HP*(len(P)-1)
-    m.addConstr(con <= B_s_c, 'C_3')
+    name = 'C_3_('+str(P[0])+','+str(P[-1])+')'
+    m.addConstr(con <= B_s_c, name)
     return m
 
 # 添加约束四，最短路约束
@@ -107,7 +108,8 @@ def addCon4(m, P, B, HP):
         B_i_j = B[str(i)+'_'+str(j)]
         con += B_i_j
     B_s_c = HP*(len(P)-1)
-    m.addConstr(con <= B_s_c, 'C_4')
+    name = 'C_4_('+str(P[0])+','+str(P[-1])+')'
+    m.addConstr(con <= B_s_c, name)
     return m
 
 if __name__ == '__main__':

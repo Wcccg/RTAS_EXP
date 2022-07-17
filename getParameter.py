@@ -67,7 +67,7 @@ def getAD(R, C, alpha, HP):
     return D
 
 # Floyd 算法求最短路，n 为节点数，E 为边集
-def Floyd_S(n, E):
+def Floyd_S(n, E, start, end):
     Vtx = []
     S_way = []
     for i in range(n):
@@ -88,13 +88,13 @@ def Floyd_S(n, E):
                 if Vtx[i][j] > Vtx[i][k]+Vtx[k][j]:
                     Vtx[i][j] = Vtx[i][k]+Vtx[k][j]
                     S_way[i][j] = S_way[i][k] + S_way[k][j][1:]
-    S = S_way[0][n-1]
+    S = S_way[start-1][end-1]
     for i in range(len(S)):
         S[i] += 1
     return S
 
 # Floyd 算法求最长路，n 为节点数，E 为边集
-def Floyd_L(n, E):
+def Floyd_L(n, E, start, end):
     Vtx = []
     L_way = []
     for i in range(n):
@@ -115,7 +115,7 @@ def Floyd_L(n, E):
                 if Vtx[i][j] < Vtx[i][k]+Vtx[k][j]:
                     Vtx[i][j] = Vtx[i][k]+Vtx[k][j]
                     L_way[i][j] = L_way[i][k] + L_way[k][j][1:]
-    L = L_way[0][n-1]
+    L = L_way[start-1][end-1]
     for i in range(len(L)):
         L[i] += 1
     return L
