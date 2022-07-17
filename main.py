@@ -52,4 +52,8 @@ if __name__ == '__main__':
             m = addCon3(m, L, B, HP)
             m = addCon4(m, S, B, HP)
     m.write('model.lp')
-
+    m.optimize()
+    for v in m.getVars():
+        print('%s %g' % (v.varName, v.x))
+    # 透過屬性objVal顯示最佳解
+    print('Obj: %g' % m.objVal)
