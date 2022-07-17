@@ -42,5 +42,5 @@ if __name__ == '__main__':
     m = setObj(m, X, HP, taskSet)
     m = addCon1(m, X)
     m = addCon2(m, X, B, E, taskSet, 0.5, HP)
-    m.write('mode.lp')
+    m.write('model.lp')
 
