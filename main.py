@@ -38,9 +38,13 @@ if __name__ == '__main__':
         print('worksNum = ', temp.worksNum, file = f)
     X = setX(m, taskSet)
     E = [[1, 2], [1, 3], [2, 3]]
+    S = Floyd_S(3, E)
+    L = Floyd_L(3, E)
     B = setB(m, E)
     m = setObj(m, X, HP, taskSet)
     m = addCon1(m, X)
     m = addCon2(m, X, B, E, taskSet, 0.5, HP)
+    m = addCon3(m, L, B, HP)
+    m = addCon4(m, S, B, HP)
     m.write('model.lp')
 

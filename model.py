@@ -75,7 +75,6 @@ def addCon2(m, X, B, E, taskSet, alpha, HP):
                 while r_j[ind] < d_i[0] and ind < Len:
                     r_j.append(r_j[ind]+HP)
                     ind += 1
-                print(d_i)
                 for x in range(len(d_i)-1):           # x, y 从 i、j 未被排除的作业中依次选取
                     for y in range(len(r_j)):       # 故满足 Y_i_x = Y_j_y = 1
                         if (d_i[x] <= r_j[y]) and (d_i[x+1] > r_j[y]):
@@ -87,25 +86,27 @@ def addCon2(m, X, B, E, taskSet, alpha, HP):
     m.update()
     return m
 
-# 添加约束三
-def addCon3(m, P, B, B_s_c):
+# 添加约束三，最长路约束
+def addCon3(m, P, B, HP):
     con = 0
-    for i, j in P:
-        i = int(i)
-        j = int(j)
+    for k in range(len(P)-1):
+        i = int(P[k])
+        j = int(P[k+1])
         B_i_j = B[str(i)+'_'+str(j)]
         con += B_i_j
+    B_s_c = HP*(len(P)-1)
     m.addConstr(con <= B_s_c, 'C_3')
     return m
 
-# 添加约束四
-def addCon4(m, P, B, B_s_c):
+# 添加约束四，最短路约束
+def addCon4(m, P, B, HP):
     con = 0
-    for i, j in P:
-        i = int(i)
-        j = int(j)
+    for k in range(len(P)-1):
+        i = int(P[k])
+        j = int(P[k+1])
         B_i_j = B[str(i)+'_'+str(j)]
         con += B_i_j
+    B_s_c = HP*(len(P)-1)
     m.addConstr(con <= B_s_c, 'C_4')
     return m
 
