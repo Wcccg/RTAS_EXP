@@ -88,7 +88,6 @@ def Floyd_S(n, E, start, end):
                 if Vtx[i][j] > Vtx[i][k]+Vtx[k][j]:
                     Vtx[i][j] = Vtx[i][k]+Vtx[k][j]
                     S_way[i][j] = S_way[i][k] + S_way[k][j][1:]
-    print(n, start, end)
     S = S_way[start-1][end-1]
     for i in range(len(S)):
         S[i] += 1

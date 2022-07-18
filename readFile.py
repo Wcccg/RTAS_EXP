@@ -8,7 +8,7 @@ class Task:                     # 一个Task()实体表示一个任务
         self.period = 0         # 释放作业周期
         self.pre = []           # 前驱节点
         self.nxt = []           # 后继节点
-        self.C = 0              # 作业执行时间
+        self.C = 0              # 作业执行时间 (WCET)
         self.plotform = 0       # 任务所在平台
 
 
@@ -68,4 +68,16 @@ def saveTaskSet(HP, taskSet, filename):
     f.close()
     return
 
-readDAG("DAG.txt")
+# 将问题的解写入 solution.txt
+def saveSolution(m, filename):
+    bestX = []
+    f = open(filename,"w")
+    for v in m.getVars():                            
+        print('%s %g' % (v.varName, v.x), file = f)
+        if v.varName[0] == 'X' and v.x == 1:
+            bestX.append(v.varName)
+    print('Obj: %g' % m.objVal, file = f)
+    print('\nThe bestX are as follows:', file = f)
+    print(bestX, file = f)
+    f.close()
+    return

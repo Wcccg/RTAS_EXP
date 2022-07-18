@@ -87,7 +87,7 @@ def addCon2(m, X, B, E, taskSet, alpha, HP):
     m.update()
     return m
 
-# 添加约束三，最长路约束
+# 添加约束三，最长路约束，目前 B_s_c 的计算规则是，B_s_c  = 路径长度*HP
 def addCon3(m, P, B, HP):
     con = 0
     for k in range(len(P)-1):
@@ -98,9 +98,10 @@ def addCon3(m, P, B, HP):
     B_s_c = HP*(len(P)-1)
     name = 'C_3_('+str(P[0])+','+str(P[-1])+')'
     m.addConstr(con <= B_s_c, name)
+    m.update()
     return m
 
-# 添加约束四，最短路约束
+# 添加约束四，最短路约束，目前 B_s_c 的计算规则是，B_s_c  = 路径长度*HP
 def addCon4(m, P, B, HP):
     con = 0
     for k in range(len(P)-1):
@@ -111,4 +112,18 @@ def addCon4(m, P, B, HP):
     B_s_c = HP*(len(P)-1)
     name = 'C_4_('+str(P[0])+','+str(P[-1])+')'
     m.addConstr(con <= B_s_c, name)
+    m.update()
+    return m
+
+# 调用前面四个函数，添加四种类型的约束
+def addCon(m, X, B, E, taskSet, alpha, HP, sensorTask, controlTask, taskNum):
+    m = setObj(m, X, HP, taskSet)
+    m = addCon1(m, X)
+    m = addCon2(m, X, B, E, taskSet, alpha, HP)
+    for i in sensorTask:
+        for j in controlTask:
+            S = Floyd_S(taskNum, E, i, j)
+            L = Floyd_L(taskNum, E, i, j)
+            m = addCon3(m, L, B, HP)
+            m = addCon4(m, S, B, HP)
     return m
