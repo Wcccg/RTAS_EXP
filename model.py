@@ -1,3 +1,4 @@
+# 该模块用于求解器初始化
 from gurobipy import *
 from getParameter import *
 
@@ -111,24 +112,3 @@ def addCon4(m, P, B, HP):
     name = 'C_4_('+str(P[0])+','+str(P[-1])+')'
     m.addConstr(con <= B_s_c, name)
     return m
-
-if __name__ == '__main__':
-    m = Model('M1')
-
-    # GRB_CONTINUOUS, GRB_BINARY, GRB_INTEGER, 
-    # GRB_SEMICONT, or GRB_SEMIINT
-    x = m.addVar(vtype=GRB.BINARY)  # m.addVar()加入變數
-    y = m.addVar(vtype=GRB.BINARY)
-    z = m.addVar(vtype=GRB.BINARY, name='z')
-    print(z)
-    m.update() #更新此model
-
-    print(z)
-
-    # m.setObjective()設置目標函數
-    # obj = []
-    # print(obj)
-    # obj.append(x)
-    # obj.append(y)
-    # print(obj)
-    # m.setObjective(obj, GRB.MAXIMIZE) 

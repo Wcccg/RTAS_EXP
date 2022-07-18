@@ -1,16 +1,46 @@
-HP =  6
+HP =  50
 -----------------
 task 1 :
-period =  3
-C =  2
-worksNum =  2
+period =  50
+C =  20
+worksNum =  1
 -----------------
 task 2 :
-period =  2
-C =  1
-worksNum =  3
+period =  50
+C =  12
+worksNum =  1
 -----------------
 task 3 :
-period =  2
-C =  1
-worksNum =  3
+period =  25
+C =  8
+worksNum =  2
+-----------------
+task 4 :
+period =  50
+C =  8
+worksNum =  1
+-----------------
+task 5 :
+period =  50
+C =  7
+worksNum =  1
+-----------------
+task 6 :
+period =  10
+C =  3
+worksNum =  5
+-----------------
+task 7 :
+period =  50
+C =  10
+worksNum =  1
+-----------------
+task 8 :
+period =  10
+C =  4
+worksNum =  5
+-----------------
+task 9 :
+period =  10
+C =  3
+worksNum =  5
