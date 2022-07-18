@@ -72,7 +72,12 @@ def saveTaskSet(HP, taskSet, filename):
 def saveSolution(m, filename):
     bestX = []
     f = open(filename,"w")
-    for v in m.getVars():                            
+    if m.status != 2:
+        print('Failed. No soution.')
+        print('No soution.', file = f)
+        return
+    print('Solved successfully.')
+    for v in m.getVars():                       
         print('%s %g' % (v.varName, v.x), file = f)
         if v.varName[0] == 'X' and v.x == 1:
             bestX.append(v.varName)

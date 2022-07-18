@@ -95,7 +95,7 @@ def addCon3(m, P, B, HP):
         j = int(P[k+1])
         B_i_j = B[str(i)+'_'+str(j)]
         con += B_i_j
-    B_s_c = HP*(len(P)-1)
+    B_s_c = HP*(len(P)-1)*0.8
     name = 'C_3_('+str(P[0])+','+str(P[-1])+')'
     m.addConstr(con <= B_s_c, name)
     m.update()
@@ -109,7 +109,7 @@ def addCon4(m, P, B, HP):
         j = int(P[k+1])
         B_i_j = B[str(i)+'_'+str(j)]
         con += B_i_j
-    B_s_c = HP*(len(P)-1)
+    B_s_c = HP*(len(P)-1)*0.7
     name = 'C_4_('+str(P[0])+','+str(P[-1])+')'
     m.addConstr(con <= B_s_c, name)
     m.update()
